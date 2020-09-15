@@ -1,9 +1,23 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import Home from '../client/components/Home';
+import { StaticRouter } from 'react-router-dom';
 
-export default () => {
-  const content = renderToString(<Home />);
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import { Provider } from 'react-redux';
+
+import Routes from '../client/Routes';
+
+const store = createStore(reducers, {}, applyMiddleware(thunk));
+
+export default (req) => {
+  const content = renderToString(
+    <Provider store={store}>
+      <StaticRouter location={req.path} context={{}}>
+        <Routes />
+      </StaticRouter>
+    </Provider>
+  );
 
   return `
   <!DOCTYPE html>
