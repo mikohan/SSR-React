@@ -211,20 +211,21 @@ var _Home = __webpack_require__(10);
 
 var _Home2 = _interopRequireDefault(_Home);
 
-var _UserList = __webpack_require__(16);
+var _UsersList = __webpack_require__(18);
 
-var _UserList2 = _interopRequireDefault(_UserList);
+var _UsersList2 = _interopRequireDefault(_UsersList);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = function () {
-  return _react2.default.createElement(
-    'div',
-    null,
-    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _Home2.default }),
-    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/users', component: _UserList2.default })
-  );
-};
+exports.default = [{
+  path: '/',
+  component: _Home2.default,
+  exact: true
+}, {
+  path: '/users',
+  component: _UsersList2.default,
+  exact: true
+}];
 
 /***/ }),
 /* 10 */
@@ -403,7 +404,14 @@ var fetchUsers = exports.fetchUsers = function fetchUsers() {
 module.exports = require("axios");
 
 /***/ }),
-/* 16 */
+/* 16 */,
+/* 17 */
+/***/ (function(module, exports) {
+
+module.exports = require("babel-polyfill");
+
+/***/ }),
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -480,12 +488,6 @@ function mapStateToProps(state) {
 }
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, { fetchUsers: _actions.fetchUsers })(UsersList);
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports) {
-
-module.exports = require("babel-polyfill");
 
 /***/ })
 /******/ ]);
